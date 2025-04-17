@@ -21,7 +21,7 @@ export default class Airport {
 
   set code(code) {
     if (typeof code !== 'string') {
-       throw new TypeError('Code must be a string');
+      throw new TypeError('Code must be a string');
     }
     this._code = code;
   }
