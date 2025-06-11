@@ -5,14 +5,14 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 
-  const DB = fs.readFileSync(path, 'utf8').split('\n').map((row) => row.split(','));
-  const students = DB.slice(1, -1);
+  const db = fs.readFileSync(path, 'utf8').split('\n').map((row) => row.split(','));
+  const students = db.slice(1, -1);
   const fields = {};
-  for (const ele of eles) {
-    if (fields[ele[3]]) {
-      fields[ele[3]].push(ele[0]);
+  for (const student of students) {
+    if (fields[student[3]]) {
+      fields[student[3]].push(student[0]);
     } else {
-      fields[ele[3]] = [ele[0]];
+      fields[student[3]] = [student[0]];
     }
   }
 
