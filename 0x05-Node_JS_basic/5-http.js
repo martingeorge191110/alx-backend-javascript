@@ -10,6 +10,7 @@ const countStudents = (path) => new Promise((resolve, reject) => {
       const DB = payload.split('\n').map((row) => row.split(','));
       const students = DB.slice(1, -1);
       const obj = {};
+      const resp = [];
       for (const ele of students) {
         if (obj[ele[3]]) {
           obj[ele[3]].push(ele[0]);
@@ -18,11 +19,11 @@ const countStudents = (path) => new Promise((resolve, reject) => {
         }
       }
 
-      console.log(`Number of students: ${students.length}`);
-      for (const [key, value] of Object.entries(obj)) {
-        console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
+      resp.push(`Number of students: ${students.length}`);
+      for (const [key, value] of Object.entries(fields)) {
+        resp.push(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
       }
-      resolve(true);
+      resolve(resp);
     }
   });
 });
